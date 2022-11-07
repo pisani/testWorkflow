@@ -16,11 +16,11 @@ jobs:
       - id: step1
         run: echo "test=hello" >> $GITHUB_OUTPUT
       - id: step2
-        #run: echo "imagebuild=${{env.PLANET}}" >> $GITHUB_OUTPUT 
-        run: echo "::set-output name=imagebuild::123" >> $GITHUB_OUTPUT
+        run: echo "imagebuild=${{env.PLANET}}" >> $GITHUB_OUTPUT 
+        #run: echo "::set-output name=imagebuild::123" >> $GITHUB_OUTPUT
   job2:
     runs-on: ubuntu-latest
     needs: job1
     steps:
       - run: echo ${{needs.job1.outputs.output1}} 
-      - run: echo ${{needs.job1.outputs.imagebuild}}
+      - run: echo ${{needs.job1.outputs.buildImageTag}}
